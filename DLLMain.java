@@ -47,7 +47,7 @@ public class DLLMain {
                 case 6 -> {
                     System.out.println("Masukkan NIM yang dicari : ");
                     String nim = scan.nextLine();
-                    Node10 found = list.search();
+                    Node10 found = list.search(nim);
                     if (found != null) {
                         System.out.println("Data ditemukan: ");
                         found.data.tampil();
