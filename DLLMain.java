@@ -17,7 +17,7 @@ public class DLLMain {
             System.out.println("5. Tampilkan data");
             System.out.println("6. Cari Mahasiswa berdasarkan NIM");
             System.out.println("0. Keluar");
-            System.out.println("Pilih menu : ");
+            System.out.print("Pilih menu : ");
             pilihan = scan.nextInt();
             scan.nextLine();
 
@@ -45,11 +45,11 @@ public class DLLMain {
                     break;
                 }
                 case 6 -> {
-                    System.out.println("Masukkan NIM yang dicari : ");
+                    System.out.print("Masukkan NIM yang dicari : ");
                     String nim = scan.nextLine();
                     Node10 found = list.search(nim);
                     if (found != null) {
-                        System.out.println("Data ditemukan: ");
+                        System.out.print("Data ditemukan: ");
                         found.data.tampil();
                     } else {
                         System.out.println("Data tidak ditemukan");
@@ -73,7 +73,7 @@ public class DLLMain {
         String nama = scan.nextLine();
         System.out.print("Masukkan Kelas: ");
         String kelas = scan.nextLine();
-        System.out.println("Masukkan IPK: ");
+        System.out.print("Masukkan IPK: ");
         double ipk = scan.nextDouble();
         scan.nextLine();
         return new Mahasiswa10(nim, nama, kelas, ipk);
