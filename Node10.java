@@ -8,6 +8,4 @@ public class Node10 {
         this.prev = null;
         this.next = null;
     }
-
-    
 }

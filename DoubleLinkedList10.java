@@ -36,7 +36,7 @@ public class DoubleLinkedList10 {
     public void insertAfter(String keyNim, Mahasiswa10 data) {
         Node10 current = head;
 
-        while (current != null && !current.data.nama.equals(keyNim)) {
+        while (current != null && !current.data.nim.equals(keyNim)) {
             current = current.next;
         }
 
@@ -62,6 +62,10 @@ public class DoubleLinkedList10 {
     }
 
     public void print() {
+        if (isEmpty()) {
+            System.out.println("Linked list masih Kosong");
+            return;
+        }   
         Node10 current = head;
         while (current != null) {
             current.data.tampil();
@@ -69,7 +73,6 @@ public class DoubleLinkedList10 {
         }
     }
     public void removeFirst() {
-
     }
 
     public void removeLast() {
@@ -82,6 +85,7 @@ public class DoubleLinkedList10 {
             if (current.data.nim.equals(nim)) {
                 return current;
             }
+            current = current.next;
         }
         return null;
     }
