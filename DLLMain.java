@@ -17,6 +17,11 @@ public class DLLMain {
             System.out.println("5. Tampilkan data");
             System.out.println("6. Cari Mahasiswa berdasarkan NIM");
             System.out.println("7. Sisipkan setelah NIM tertentu");
+            System.out.println("8. Tambah di indeks tertentu");
+            System.out.println("9. Hapus node setelah NIM tertentu");
+            System.out.println("10. Hapus berdasarkan indeks");
+            System.out.println("11. Tampilkan data pertama, terakhir, dan berdasarkan indeks");
+            System.out.println("12. Tampilkan jumlah data");
             System.out.println("0. Keluar");
             System.out.print("Pilih menu : ");
             pilihan = scan.nextInt();
@@ -61,6 +66,51 @@ public class DLLMain {
                     String keyNim = scan.nextLine();
                     Mahasiswa10 mhs = inputMahasiswa(scan);
                     list.insertAfter(keyNim, mhs);
+                    break;
+                }
+                case 8 -> {
+                    System.out.print("Masukkan index: ");
+                    int index = scan.nextInt();
+                    scan.nextLine();
+                    Mahasiswa10 mhs = inputMahasiswa(scan);
+                    list.add(index, mhs);
+                    break;
+                }
+                case 9 -> {
+                    System.out.print("Masukkan NIM setelah dimana node akan dihapus: ");
+                    String keyNim = scan.nextLine();
+                    list.removeAfter(keyNim);
+                    break;
+                }
+                case 10 -> {
+                    System.out.print("Masukkan index yang akan dihapus: ");
+                    int index = scan.nextInt();
+                    scan.nextLine();
+                    list.remove(index);
+                    break;
+                }
+                case 11 -> {
+                Mahasiswa10 first = list.getFirst();
+                Mahasiswa10 last = list.getLast();
+                System.out.println("Data pertama:");
+                if (first != null) first.tampil();
+                else System.out.println("Kosong");
+
+                System.out.println("Data terakhir:");
+                if (last != null) last.tampil();
+                else System.out.println("Kosong");
+
+                System.out.print("Masukkan indeks: ");
+                int index = scan.nextInt();
+                scan.nextLine();
+                Mahasiswa10 mhs = list.getIndex(index);
+                System.out.println("Data di indeks " + index + ":");
+                if (mhs != null) mhs.tampil();
+                else System.out.println("Tidak ditemukan");
+                break;
+                }
+                case 12 -> {
+                    System.out.println("Jumlah data dalam list: " + list.size());
                     break;
                 }
                 case 0 -> {

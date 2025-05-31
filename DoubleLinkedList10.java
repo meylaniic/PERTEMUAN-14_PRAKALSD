@@ -115,5 +115,136 @@ public class DoubleLinkedList10 {
         }
         return null;
     }
+
+    public void add(int index, Mahasiswa10 data) {
+        if (index < 0) {
+            System.out.println("Index tidak valid.");
+            return;
+        }
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+        
+        Node10 current = head;
+        int i = 0;
+
+        while (current != null && i < index - 1) {
+            current = current.next;
+            i++;
+        }
+
+        if (current == null) {
+            System.out.println("Index melebbihi panjang list");
+            return;
+        }
+
+        Node10 newNode = new Node10(data);
+        newNode.next = current.next;
+        newNode.prev = current;
+        if (current.next != null) {
+            current.next.prev = newNode;
+        } else {
+            tail = newNode;
+        }
+        current.next = newNode;
+        System.out.println("Node berhasil ditambahkan pada index " + index);
+        
+    }
+
+    public void removeAfter(String keyNim) {
+        Node10 current = head;
+
+        while (current != null && !current.data.nim.equals(keyNim)) {
+            current = current.next;
+        }
+
+        if (current == null || current.next == null) {
+            System.out.println("Node dengan NIM " + keyNim + " tidak ditemukan.");
+            return;
+        }
+
+        Node10 toRemove = current.next;
+        current.next = toRemove.next;
+
+        if (toRemove.next != null) {
+            toRemove.next.prev = current;
+        } else {
+            tail = current; // Jika yang dihapus adalah node terakhir
+        }
+
+        System.out.println("Node setelah NIM " + keyNim + " berhasil dihapus.");
+    }
+
+    public void remove(int index) {
+        if (index < 0 || isEmpty()) {
+            System.out.println("Index tidak valid atau list kosong.");
+            return;
+        }
+        if (index == 0) {
+            removeFirst();
+            return;
+        }
+
+        Node10 current = head;
+        int i = 0;
+
+        while (current != null && i < index) {
+            current = current.next;
+            i++;
+        }
+
+        if (current == null) {
+            System.out.println("Index melebbihi panjang list");
+            return;
+        }
+
+        if (current.prev != null) {
+            current.prev.next = current.next;
+        }
+        if (current.next != null) {
+            current.next.prev = current.prev;
+        } else {
+            tail = current.prev; 
+        }
+
+        System.out.println("Node pada index " + index + " berhasil dihapus.");
+    }
+
+    public Mahasiswa10 getFirst() {
+        return (head != null) ? head.data : null;
+    }
+
+    public Mahasiswa10 getLast() {
+        return (tail != null) ? tail.data : null;
+    }
+
+    public Mahasiswa10 getIndex(int index) {
+        if (index < 0) return null;
+        Node10 current = head;
+        int i = 0;
+
+        while (current != null && i < index) {
+            current = current.next;
+            i++;
+        }
+
+        if (current == null) {
+            System.out.println("Index melebbihi panjang list");
+            return null;
+        }
+
+        return current.data;
+    }
+
+    public int size() {
+        int count = 0;
+        Node10 current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
 }
 
